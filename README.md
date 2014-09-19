@@ -1,5 +1,6 @@
 ## mustache loader for [webpack](https://webpack.github.io/)
 
+[![travis](http://img.shields.io/travis/deepsweet/mustache-loader.svg?style=flat-square)](https://travis-ci.org/deepsweet/mustache-loader)
 [![npm](http://img.shields.io/npm/v/mustache-loader.svg?style=flat-square)](https://www.npmjs.org/package/mustache-loader)
 [![deps](http://img.shields.io/david/deepsweet/mustache-loader.svg?style=flat-square)](https://david-dm.org/deepsweet/mustache-loader)
 ![unicorn approved](http://img.shields.io/badge/unicorn-approved-ff69b4.svg?style=flat-square)

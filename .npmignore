@@ -1,2 +1,3 @@
 .gitignore
 .editorconfig
+.travis.yml

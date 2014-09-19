@@ -3,13 +3,15 @@
 var Hogan = require('hogan.js');
 
 module.exports = function(source) {
-    this.cacheable && this.cacheable();
+    if (this.cacheable) {
+        this.cacheable();
+    }
 
-    return 'var Hogan = require("hogan.js");' +
-           'module.exports = function() {' +
-           'var T = new Hogan.Template(' +
+    return 'var H = require("hogan.js");\n' +
+           'module.exports = function() { ' +
+           'var T = new H.Template(' +
            Hogan.compile(source, { asString: true }) +
            ', ' +
            JSON.stringify(source) +
-           ', Hogan); return T.render.apply(T, arguments) ;}';
+           ', H); return T.render.apply(T, arguments); };';
 };

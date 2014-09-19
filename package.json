@@ -1,6 +1,6 @@
 {
   "name": "mustache-loader",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "mustache loader for webpack",
   "keywords": [
     "webpack",
@@ -22,8 +22,15 @@
   "dependencies": {
     "hogan.js": "~3.0.2"
   },
-  "license": "WTFPL",
+  "devDependencies": {
+    "eslint": "~0.8.1",
+    "jscs": "~1.6.2"
+  },
+  "scripts": {
+    "test": "eslint index.js && jscs index.js"
+  },
   "engines": {
     "node": ">=0.8.0"
-  }
+  },
+  "license": "WTFPL"
 }
