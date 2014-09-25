@@ -1,16 +1,9 @@
 ---
   # https://github.com/eslint/eslint/blob/master/docs/configuring/README.md
-  globals:
-    $: true
-    _: true,
-    Backbone: true
-    Marionette: true
 
   env:
     node: true
     browser: true
-    amd: true
-    mocha: true
 
   # https://github.com/eslint/eslint/tree/master/docs/rules
   rules:
@@ -88,7 +81,7 @@
 
     # strict mode
     # Definition for rule 'global-strict' was not found
-    global-strict: [2, "always"]
+    # global-strict: [2, "always"]
     no-extra-strict: 2
     strict: 2
 
@@ -110,7 +103,7 @@
     no-path-concat: 2
     no-process-exit: 2
     no-restricted-modules: 0
-    no-sync: 1
+    no-sync: 0
 
     # stylistic issues, disabled because of JSCS
     brace-style: 0

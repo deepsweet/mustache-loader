@@ -103,7 +103,5 @@
   "requireSpaceAfterLineComment": true,
   "requireAnonymousFunctions": true,
   "disallowNewlineBeforeBlockStatements": true,
-  "additionalRules": [
-    "node_modules/jscs-jsdoc/lib/rules/*.js"
-  ]
+  "disallowMultipleVarDecl": true
 }
