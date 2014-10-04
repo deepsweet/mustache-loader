@@ -1,7 +1,7 @@
 {
   "name": "mustache-loader",
-  "version": "0.1.4",
-  "description": "mustache loader for webpack",
+  "version": "0.2.0",
+  "description": "Mustache loader for webpack",
   "keywords": [
     "webpack",
     "loader",
@@ -21,10 +21,12 @@
   "main": "index.js",
   "peerDependencies": {
     "hogan.js": "^3.0.2",
-    "webpack": "^1.4.3"
+    "webpack": "^1.4.3",
+    "loader-utils": "^0.2.4"
   },
   "dependencies": {
-    "hogan.js": "^3.0.2"
+    "hogan.js": "^3.0.2",
+    "html-minifier": "^0.6.8"
   },
   "devDependencies": {
     "eslint": "^0.8.1",

@@ -6,26 +6,24 @@
 [![dev deps](http://img.shields.io/david/dev/deepsweet/mustache-loader.svg?style=flat-square)](https://david-dm.org/deepsweet/mustache-loader#info=devDependencies)
 ![unicorn approved](http://img.shields.io/badge/unicorn-approved-ff69b4.svg?style=flat-square)
 
-Compiles [Mustache](https://mustache.github.io/) templates with [Hogan](https://twitter.github.io/hogan.js/).
+Compiles [Mustache](https://mustache.github.io/) templates with [Hogan](https://twitter.github.io/hogan.js/) and optionally [html-minifier](https://github.com/kangax/html-minifier).
 
 ### Install
 
 ```sh
-npm i -S mustache-loader
+$ npm i -S mustache-loader
 ```
 
 ### Usage
 
 ```javascript
-{
-    ...
-    module: {
-        loaders: [ {
-            test: /\.html$/,
-            loader: 'mustache-loader'
-        } ]
-    },
-    ...
+module: {
+    loaders: [ {
+        test: /\.html$/,
+        loader: 'mustache'
+        // loader: 'mustache?minify'
+        // loader: 'mustache?{ minify: { removeComments: false } }'
+    } ]
 }
 ```
 
