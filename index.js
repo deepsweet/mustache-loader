@@ -45,11 +45,18 @@ module.exports = function(source) {
         source = minifier.minify(source, minifierOptions);
     }
 
+    var suffix;
+    if (query.noShortcut) {
+      suffix = 'return T; }();';
+    } else {
+      suffix = 'return T.render.apply(T, arguments); };';
+    }
+
     return 'var H = require("hogan.js");\n' +
            'module.exports = function() { ' +
            'var T = new H.Template(' +
            Hogan.compile(source, { asString: true }) +
            ', ' +
            JSON.stringify(source) +
-           ', H); return T.render.apply(T, arguments); };';
+           ', H);' + suffix;
 };
