@@ -23,6 +23,7 @@ module: {
         loader: 'mustache'
         // loader: 'mustache?minify'
         // loader: 'mustache?{ minify: { removeComments: false } }'
+        // loader: 'mustache?noShortcut'
     } ]
 }
 ```
@@ -30,6 +31,15 @@ module: {
 ```javascript
 var template = require('./template.html');
 var html = template({ foo: 'bar' });
+```
+
+If `noShortcut` is passed, then Hogan compiled template is returned instead, so
+you can pass it as partial.
+
+```javascript
+var template = require('./template.html');
+var template2 = require('./template2.html');
+var html = template.render({ foo: 'bar' }, {partial: template2});
 ```
 
 [Documentation: Using loaders](https://webpack.github.io/docs/using-loaders.html).
