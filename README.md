@@ -39,7 +39,7 @@ you can pass it as partial.
 ```javascript
 var template = require('./template.html');
 var template2 = require('./template2.html');
-var html = template.render({ foo: 'bar' }, {partial: template2});
+var html = template({ foo: 'bar' }, {partial: template2});
 ```
 
 [Documentation: Using loaders](https://webpack.github.io/docs/using-loaders.html).
