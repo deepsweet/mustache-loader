@@ -3,6 +3,7 @@
 var loaderUtils = require('loader-utils');
 var Hogan = require('hogan.js');
 var minifier = require('html-minifier');
+var extend = require('xtend');
 
 // https://github.com/kangax/html-minifier#options-quick-reference
 var minifierDefaults = {
@@ -14,19 +15,11 @@ var minifierDefaults = {
     caseSensitive: true
 };
 
-// :)
-var extend = function(target, source) {
-    target = JSON.parse(JSON.stringify(target));
-
-    Object.keys(source).forEach(function(key) {
-        target[key] = source[key];
-    });
-
-    return target;
-};
-
 module.exports = function(source) {
     var query = loaderUtils.parseQuery(this.query);
+    var hoganOpts = extend(query, { asString: true });
+    delete hoganOpts.minify;
+    delete hoganOpts.noShortcut;
 
     if (this.cacheable) {
         this.cacheable();
@@ -55,7 +48,7 @@ module.exports = function(source) {
     return 'var H = require("hogan.js");\n' +
            'module.exports = function() { ' +
            'var T = new H.Template(' +
-           Hogan.compile(source, { asString: true }) +
+           Hogan.compile(source, hoganOpts) +
            ', ' +
            JSON.stringify(source) +
            ', H);' + suffix;
