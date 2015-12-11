@@ -21,12 +21,12 @@
   "main": "index.js",
   "peerDependencies": {
     "hogan.js": "^3.0.2",
-    "webpack": "^1.4.3",
-    "loader-utils": "^0.2.4"
+    "webpack": "^1.4.3"
   },
   "dependencies": {
     "hogan.js": "^3.0.2",
-    "html-minifier": "^0.6.8"
+    "html-minifier": "^0.6.8",
+    "loader-utils": "^0.2.4"
   },
   "devDependencies": {
     "eslint": "^0.8.1",
