@@ -3,6 +3,8 @@
 var loaderUtils = require('loader-utils');
 var Hogan = require('hogan.js');
 var minifier = require('html-minifier');
+var attrParse = require('./lib/attributesParser');
+var url = require('url');
 
 // https://github.com/kangax/html-minifier#options-quick-reference
 var minifierDefaults = {
@@ -25,11 +27,50 @@ var extend = function(target, source) {
     return target;
 };
 
+var randomIdent = function() {
+    return 'xxxHTMLLINKxxx' + Math.random() + Math.random() + 'xxx';
+};
+
 module.exports = function(source) {
     var query = loaderUtils.parseQuery(this.query);
+    var attributes;
+    var attributesDefaults = [ 'img:src' ];
+    var data = {};
+    var links;
+    var ident;
 
     if (this.cacheable) {
         this.cacheable();
+    }
+
+    // minify?
+    if (query.processAttrs) {
+        // `?minify`
+        attributes = attributesDefaults;
+        links = attrParse(source, function(tag, attr) {
+            return attributes.indexOf(tag + ':' + attr) >= 0;
+        });
+        links.reverse();
+        source = [ source ];
+        links.forEach(function(link) {
+            var uri = url.parse(link.value);
+            if (uri.hash !== null && uri.hash !== void 0) {
+                uri.hash = null;
+                link.value = uri.format();
+                link.length = link.value.length;
+            }
+
+            do {
+                ident = randomIdent();
+            } while (data[ident]);
+            data[ident] = link.value;
+            var x = source.pop();
+            source.push(x.substr(link.start + link.length));
+            source.push(ident);
+            source.push(x.substr(0, link.start));
+        });
+        source.reverse();
+        source = source.join('');
     }
 
     // minify?
@@ -52,11 +93,18 @@ module.exports = function(source) {
         suffix = 'return T.render.apply(T, arguments); };';
     }
 
+    source = source.replace(/xxxHTMLLINKxxx[0-9\.]+xxx/g, function(match) {
+        if (!data[match]) {
+            return match;
+        }
+        return '" + require(' + JSON.stringify(data[match]) + ') + "';
+    });
+
     return 'var H = require("hogan.js");\n' +
-           'module.exports = function() { ' +
-           'var T = new H.Template(' +
-           Hogan.compile(source, { asString: true }) +
-           ', ' +
-           JSON.stringify(source) +
-           ', H);' + suffix;
+    'module.exports = function() { ' +
+    'var T = new H.Template(' +
+    Hogan.compile(source, { asString: true }) +
+    ', ' +
+    JSON.stringify(source) +
+    ', H);' + suffix;
 };

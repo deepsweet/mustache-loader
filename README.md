@@ -24,6 +24,8 @@ module: {
         // loader: 'mustache?minify'
         // loader: 'mustache?{ minify: { removeComments: false } }'
         // loader: 'mustache?noShortcut'
+        // loader: 'mustache?processAttrs'
+        // loader: 'mustache?noShortcut&processAttrs'
     } ]
 }
 ```
@@ -41,6 +43,17 @@ var template = require('./template.html');
 var template2 = require('./template2.html');
 var html = template({ foo: 'bar' }, {partial: template2});
 ```
+
+If `processAttrs` is passed, then IMG:SRC attribute will be process as HTML-loader
+does to handle relative image loading path. Example:
+
+ file: app/templates/tmpl.mustache
+```javascript
+ <img src="../images/bs_icon.png" height="36">...
+```
+
+the image `bs_icon.png` will be load with require `require('../images/bs_icon.png')`
+
 
 [Documentation: Using loaders](https://webpack.github.io/docs/using-loaders.html).
 

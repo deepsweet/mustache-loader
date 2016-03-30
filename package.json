@@ -1,6 +1,6 @@
 {
   "name": "mustache-loader",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "Mustache loader for webpack",
   "keywords": [
     "webpack",
@@ -26,7 +26,8 @@
   "dependencies": {
     "hogan.js": "^3.0.2",
     "html-minifier": "^0.6.8",
-    "loader-utils": "^0.2.4"
+    "loader-utils": "^0.2.4",
+    "fastparse": "^1.0.0"
   },
   "devDependencies": {
     "eslint": "^0.8.1",
