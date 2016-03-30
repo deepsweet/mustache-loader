@@ -55,14 +55,6 @@ does to handle relative image loading path. Example:
 the image `bs_icon.png` will be load with require `require('../images/bs_icon.png')`
 
 
-```javascript
-var template = require('./template.html');
-var template2 = require('./template2.html');
-var html = template({ foo: 'bar' }, {partial: template2});
-```
-
-
-
 [Documentation: Using loaders](https://webpack.github.io/docs/using-loaders.html).
 
 ### License
