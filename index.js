@@ -33,7 +33,8 @@ var randomIdent = function () {
 
 module.exports = function(source) {
     var query = loaderUtils.parseQuery(this.query);
-    var attributes = ["img:src"];
+    var attributes;
+    var attributesDefaults = ["img:src"];
     var data = {};
     var links;
 
@@ -41,32 +42,37 @@ module.exports = function(source) {
         this.cacheable();
     }
 
-    links = attrParse(source, function(tag, attr) {
-        return attributes.indexOf(tag + ":" + attr) >= 0;
-    });
-    links.reverse();
-    source = [source];
-    links.forEach(function(link) {
-        if(!loaderUtils.isUrlRequest(link.value, root)) return;
+    // minify?
+    if (query.processAttrs) {
+        // `?minify`
+        attributes = attributesDefaults;
+        links = attrParse(source, function(tag, attr) {
+            return attributes.indexOf(tag + ":" + attr) >= 0;
+        });
+        links.reverse();
+        source = [source];
+        links.forEach(function(link) {
+            if(!loaderUtils.isUrlRequest(link.value, root)) return;
 
-        var uri = url.parse(link.value);
-        if (uri.hash !== null && uri.hash !== undefined) {
-            uri.hash = null;
-            link.value = uri.format();
-            link.length = link.value.length;
-        }
+            var uri = url.parse(link.value);
+            if (uri.hash !== null && uri.hash !== undefined) {
+                uri.hash = null;
+                link.value = uri.format();
+                link.length = link.value.length;
+            }
 
-        do {
-            var ident = randomIdent();
-        } while(data[ident]);
-        data[ident] = link.value;
-        var x = source.pop();
-        source.push(x.substr(link.start + link.length));
-        source.push(ident);
-        source.push(x.substr(0, link.start));
-    });
-    source.reverse();
-    source = source.join("");
+            do {
+                var ident = randomIdent();
+            } while(data[ident]);
+            data[ident] = link.value;
+            var x = source.pop();
+            source.push(x.substr(link.start + link.length));
+            source.push(ident);
+            source.push(x.substr(0, link.start));
+        });
+        source.reverse();
+        source = source.join("");
+    }
 
     // minify?
     if (query.minify) {
