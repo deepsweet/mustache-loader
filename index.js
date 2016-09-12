@@ -52,7 +52,7 @@ module.exports = function(source) {
         suffix = 'return T.render.apply(T, arguments); };';
     }
 
-    return 'var H = require("hogan.js");\n' +
+    return 'var H = require("hogan.js/lib/template");\n' +
            'module.exports = function() { ' +
            'var T = new H.Template(' +
            Hogan.compile(source, { asString: true }) +
