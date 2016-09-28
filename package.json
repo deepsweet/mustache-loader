@@ -27,6 +27,7 @@
     "hogan.js": "^3.0.2",
     "html-minifier": "^0.6.8",
     "loader-utils": "^0.2.4"
+    "xtend": "^4.0.0"
   },
   "devDependencies": {
     "eslint": "^0.8.1",
