@@ -1,6 +1,6 @@
 {
   "name": "mustache-loader",
-  "version": "0.3.3",
+  "version": "0.4.0",
   "description": "Mustache loader for webpack",
   "keywords": [
     "webpack",
@@ -25,16 +25,19 @@
   },
   "dependencies": {
     "hogan.js": "^3.0.2",
-    "html-minifier": "^0.6.8",
+    "html-minifier": "^3.1.0",
     "loader-utils": "^0.2.4",
     "xtend": "^4.0.0"
   },
   "devDependencies": {
-    "eslint": "^0.8.1",
-    "jscs": "^1.6.2"
+    "eslint": "^3.6.1", 
+    "jscs": "^3.0.7",
+    "mocha": "^3.1.0",
+    "chai": "^3.5.0"
   },
   "scripts": {
-    "test": "eslint index.js && jscs index.js"
+    "pretest": "eslint index.js && jscs index.js",
+    "test": "mocha --reporter spec"
   },
   "engines": {
     "node": ">=0.10.0"
