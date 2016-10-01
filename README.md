@@ -4,7 +4,7 @@
 [![travis](http://img.shields.io/travis/deepsweet/mustache-loader.svg?style=flat-square)](https://travis-ci.org/deepsweet/mustache-loader)
 [![climate](http://img.shields.io/codeclimate/github/deepsweet/mustache-loader.svg?style=flat-square)](https://codeclimate.com/github/deepsweet/mustache-loader/code)
 [![peer deps](http://img.shields.io/david/peer/deepsweet/mustache-loader.svg?style=flat-square)](https://david-dm.org/deepsweet/mustache-loader#info=peerDependencies)
-[![dependencies](http://img.shields.io/david/peer/deepsweet/mustache-loader.svg?style=flat-square)](https://david-dm.org/deepsweet/mustache-loader#info=dependencies)
+[![dependencies](http://img.shields.io/david/deepsweet/mustache-loader.svg?style=flat-square)](https://david-dm.org/deepsweet/mustache-loader#info=dependencies)
 
 Compiles [Mustache](https://mustache.github.io/) templates with [Hogan](https://twitter.github.io/hogan.js/) and optionally [html-minifier](https://github.com/kangax/html-minifier).
 
@@ -41,6 +41,8 @@ var template = require('./template.html');
 var template2 = require('./template2.html');
 var html = template.render({ foo: 'bar' }, {partial: template2});
 ```
+
+Any additional Hogan parameters passed into this loader will be passed through to Hogan.
 
 [Documentation: Using loaders](https://webpack.github.io/docs/using-loaders.html).
 
