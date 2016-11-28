@@ -1,14 +1,19 @@
 language: node_js
-
 node_js:
-  - 6
-  - 5
-  - 4
-
+- 6
+- 5
+- 4
 matrix:
   allow_failures:
-    - node_js: 5
-
+  - node_js: 5
 branches:
   only:
-    - master
+  - master
+deploy:
+  provider: npm
+  email: baderbuddy@gmail.com
+  api_key:
+    secure: RgQjjB/6X5Kx6vEDAOc+K/D82k2RxJPpELuRYbUdTdtQjcIys6yt3vn7UKXqaXOcj3ULYg6dCgSNkLINrl2pQl4HHDiZU+OfwQSucYVHdcIUN8G8urLA8JdfDHzLtYDDKLDsxXBsDT/QMmKxFGfbiKXc6SLtiCBJCWUAAaKEet0=
+  on:
+    tags: true
+    repo: deepsweet/mustache-loader
