@@ -65,8 +65,7 @@ module.exports.pitch = function(remainingRequest, precedingRequest, data) {
         var suffix;
         if (query.noShortcut) {
             suffix = 'return T; }();';   
-        }
-        else {
+        } else {
             suffix = 'return T.render.apply(T, arguments); };';
         }
         return 'var result = require(' + loaderUtils.stringifyRequest(this, '!!' + remainingRequest) + ')\n' +
@@ -75,11 +74,5 @@ module.exports.pitch = function(remainingRequest, precedingRequest, data) {
             'module.exports = function() {\n' +
             'var T = H.compile(result, ' + JSON.stringify(hoganOpts) + ');\n' +
             suffix;
-    
-        
-        
-        
-        
     }
-    
 };
