@@ -9,6 +9,7 @@ matrix:
 branches:
   only:
   - master
+  - /^\d.*$/
 deploy:
   provider: npm
   email: baderbuddy@gmail.com
