@@ -53,3 +53,26 @@ module.exports = function(source) {
            JSON.stringify(source) +
            ', H);' + suffix;
 };
+module.exports.pitch = function(remainingRequest, precedingRequest, data) {
+    if (remainingRequest.indexOf('!') >= 0) {
+        var query = loaderUtils.parseQuery(this.query);
+        var hoganOpts = extend(query, { asString: true });
+        delete hoganOpts.minify;
+        delete hoganOpts.noShortcut;
+        if (this.cacheable) {
+            this.cacheable();
+        }
+        var suffix;
+        if (query.noShortcut) {
+            suffix = 'return T; }();';
+        } else {
+            suffix = 'return T.render.apply(T, arguments); };';
+        }
+        return 'var result = require(' + loaderUtils.stringifyRequest(this, '!!' + remainingRequest) + ')\n' +
+            'var H = request("hogan.js");\n' +
+            'window.Hogan = H;\n' +
+            'module.exports = function() {\n' +
+            'var T = H.compile(result, ' + JSON.stringify(hoganOpts) + ');\n' +
+            suffix;
+    }
+};
