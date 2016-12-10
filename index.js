@@ -69,7 +69,7 @@ module.exports.pitch = function(remainingRequest, precedingRequest, data) {
         else {
             suffix = 'return T.render.apply(T, arguments); };';
         }
-        return 'var result = require(' + loadUtils.stringifyRequest(this, '!!' + remainingRequest) + ')\n' +
+        return 'var result = require(' + loaderUtils.stringifyRequest(this, '!!' + remainingRequest) + ')\n' +
             'var H = request("hogan.js");\n' +
             'window.Hogan = H;\n' +
             'module.exports = function() {\n' +
