@@ -60,11 +60,11 @@ module.exports.pitch = function(remainingRequest, precedingRequest, data) {
         delete hoganOpts.minify;
         delete hoganOpts.noShortcut;
         if (this.cacheable) {
-            this.cacheable();   
+            this.cacheable();
         }
         var suffix;
         if (query.noShortcut) {
-            suffix = 'return T; }();';   
+            suffix = 'return T; }();';
         } else {
             suffix = 'return T.render.apply(T, arguments); };';
         }
