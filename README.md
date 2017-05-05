@@ -16,6 +16,7 @@ $ npm i -S mustache-loader
 
 ### Usage
 
+webpack@1.x
 ```javascript
 module: {
     loaders: [ {
@@ -24,6 +25,18 @@ module: {
         // loader: 'mustache?minify'
         // loader: 'mustache?{ minify: { removeComments: false } }'
         // loader: 'mustache?noShortcut'
+    } ]
+}
+```
+webpack@2.x
+```javascript
+module: {
+    rules: [ {
+        test: /\.html$/,
+        loader: 'mustache-loader'
+        // loader: 'mustache-loader?minify'
+        // loader: 'mustache-loader?{ minify: { removeComments: false } }'
+        // loader: 'mustache-loader?noShortcut'
     } ]
 }
 ```
