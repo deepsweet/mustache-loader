@@ -10,7 +10,7 @@ describe("MustacheLoader", function () {
                         done(err);
                         return;
                     }
-                    var results = mustacheLoader.apply({}, [data]);
+                    var results = mustacheLoader.apply({query : {}}, [data]);
                     var module = {};
                     eval(results);
                     expect(module.exports).to.not.be.undefined;
@@ -38,7 +38,7 @@ describe("MustacheLoader", function () {
                         done(err);
                         return;
                     }
-                    var results = mustacheLoader.apply({query: { minify: true}}, [data]);
+                    var results = mustacheLoader.apply({query: "?minify"}, [data]);
                     var module = {};
                     eval(results);
                     expect(module.exports).to.not.be.undefined;

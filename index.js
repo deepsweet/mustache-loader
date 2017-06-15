@@ -1,5 +1,4 @@
 'use strict';
-
 var loaderUtils = require('loader-utils');
 var Hogan = require('hogan.js');
 var minifier = require('html-minifier');
@@ -16,7 +15,7 @@ var minifierDefaults = {
 };
 
 module.exports = function(source) {
-    var query = loaderUtils.parseQuery(this.query);
+    var query = loaderUtils.getOptions(this);
     var hoganOpts = extend(query, { asString: true });
     delete hoganOpts.minify;
     delete hoganOpts.noShortcut;
@@ -55,7 +54,7 @@ module.exports = function(source) {
 };
 module.exports.pitch = function(remainingRequest, precedingRequest, data) {
     if (remainingRequest.indexOf('!') >= 0) {
-        var query = loaderUtils.parseQuery(this.query);
+        var query = loaderUtils.getOptions(this.query);
         var hoganOpts = extend(query);
         delete hoganOpts.minify;
         delete hoganOpts.noShortcut;

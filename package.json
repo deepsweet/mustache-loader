@@ -26,14 +26,14 @@
   "dependencies": {
     "hogan.js": "^3.0.2",
     "html-minifier": "^3.1.0",
-    "loader-utils": "^0.2.4",
+    "loader-utils": "^1.1.0",
     "xtend": "^4.0.0"
   },
   "devDependencies": {
     "eslint": "^3.6.1",
     "jscs": "^3.0.7",
     "mocha": "^3.1.0",
-    "chai": "^3.5.0"
+    "chai": "^4.0.0"
   },
   "scripts": {
     "pretest": "eslint index.js && jscs index.js",
