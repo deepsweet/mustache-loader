@@ -43,6 +43,19 @@ module.exports = function(source) {
     } else {
         suffix = 'return T.render.apply(T, arguments); };';
     }
+    if (query.clientSide) {
+        return 'var H = require("hogan.js");\n' +
+            'module.exports = function() { ' +
+            'var src = ' + JSON.stringify(source) + " \n" +
+            'var T = H.compile(src, ' + JSON.stringify(hoganOpts) + ');\n' + suffix;
+    }
+    if (query.tiny) {
+        return 'var H = require("hogan.js");\n' +
+            'module.exports = function() { ' +
+             'var T = new H.Template(' +
+            Hogan.compile(source, hoganOpts) +
+            ');' + suffix;
+    }
 
     return 'var H = require("hogan.js");\n' +
            'module.exports = function() { ' +
