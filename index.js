@@ -46,7 +46,7 @@ module.exports = function(source) {
     if (query.clientSide) {
         return 'var H = require("hogan.js");\n' +
             'module.exports = function() { ' +
-            'var src = ' + JSON.stringify(source) + " \n" +
+            'var src = ' + JSON.stringify(source) + ' \n' +
             'var T = H.compile(src, ' + JSON.stringify(hoganOpts) + ');\n' + suffix;
     }
     if (query.tiny) {
