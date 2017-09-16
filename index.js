@@ -19,6 +19,16 @@ module.exports = function(source) {
     var hoganOpts = extend(query, { asString: true });
     delete hoganOpts.minify;
     delete hoganOpts.noShortcut;
+    delete hoganOpts.clientSide;
+    delete hoganOpts.tiny;
+    var render;
+    if (query.render) {
+        if (query.clientSide) {
+            this.callback(new Error('"render" and "clientSide" options are mutually exclusive'));
+        }
+        render = hoganOpts.render;
+        delete hoganOpts.render;
+    }
 
     if (this.cacheable) {
         this.cacheable();
@@ -40,6 +50,8 @@ module.exports = function(source) {
     var suffix;
     if (query.noShortcut) {
         suffix = 'return T; }();';
+    } else if (query.render) {
+        suffix = 'return T.render(' + JSON.stringify(render) + ');};';
     } else {
         suffix = 'return T.render.apply(T, arguments); };';
     }

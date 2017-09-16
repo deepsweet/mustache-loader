@@ -59,6 +59,8 @@ If `clientSide` is passed in, then Hogan will not pre-compile the template.
 
 If `tiny` is passed in, the source of the template will not be emitted, creating a smaller output.
 
+if `render` is passed in, the data is sent is used to immediately render the template.
+
 If another loader is chained after Mustache-Loader then the `minify`, `clientSide`, and `tiny` options will be ignored.
 
 Any additional Hogan parameters passed into this loader will be passed through to Hogan.
