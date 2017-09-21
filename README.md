@@ -59,6 +59,31 @@ If `clientSide` is passed in, then Hogan will not pre-compile the template.
 
 If `tiny` is passed in, the source of the template will not be emitted, creating a smaller output.
 
+if `render` is passed in, the data is sent is used to immediately render the template.
+
+For example, the following will render `index.mustache` with the provided data (`title`), which can immediately be used by HtmlWebpackPlugin.
+
+```javascript
+module: {
+    rules: [ {
+        test: /index\.mustache$/,
+        loader: 'mustache-loader',
+        options: {
+            tiny: true,
+            render: {
+                title: 'hello world',
+            },
+        },
+    } ]
+}
+plugins: [
+    new HtmlWebpackPlugin({
+        template: 'index.mustache',
+        inject: 'body',
+    }),
+]
+```
+
 If another loader is chained after Mustache-Loader then the `minify`, `clientSide`, and `tiny` options will be ignored.
 
 Any additional Hogan parameters passed into this loader will be passed through to Hogan.
