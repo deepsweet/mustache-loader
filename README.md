@@ -59,7 +59,7 @@ If `clientSide` is passed in, then Hogan will not pre-compile the template.
 
 If `tiny` is passed in, the source of the template will not be emitted, creating a smaller output.
 
-if `render` is passed in, the data is sent is used to immediately render the template.
+if `render` is passed in, the data is sent is used to immediately render the template.  Render may be an object or a function which returns an object (in order to allow the data to change over time, e.g. to support hot reloading).
 
 For example, the following will render `index.mustache` with the provided data (`title`), which can immediately be used by HtmlWebpackPlugin.
 

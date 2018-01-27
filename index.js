@@ -26,7 +26,7 @@ module.exports = function(source) {
         if (query.clientSide) {
             this.callback(new Error('"render" and "clientSide" options are mutually exclusive'));
         }
-        render = hoganOpts.render;
+        render = typeof hoganOpts.render === 'function' ? hoganOpts.render() : hoganOpts.render;
         delete hoganOpts.render;
     }
 
@@ -83,6 +83,7 @@ module.exports.pitch = function(remainingRequest, precedingRequest, data) {
         var hoganOpts = extend(query);
         delete hoganOpts.minify;
         delete hoganOpts.noShortcut;
+        delete hoganOpts.render;
         if (this.cacheable) {
             this.cacheable();
         }
