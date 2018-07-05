@@ -95,7 +95,6 @@ module.exports.pitch = function(remainingRequest, precedingRequest, data) {
         }
         return 'var result = require(' + loaderUtils.stringifyRequest(this, '!!' + remainingRequest) + ')\n' +
             'var H = require("hogan.js");\n' +
-            'window.Hogan = H;\n' +
             'module.exports = function() {\n' +
             'var T = H.compile(result, ' + JSON.stringify(hoganOpts) + ');\n' +
             suffix;
