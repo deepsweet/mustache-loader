@@ -12,7 +12,7 @@ var minifierDefaults = {
     removeRedundantAttributes: true,
     removeEmptyAttributes: true,
     caseSensitive: true,
-    ignoreCustomFragments: [/{{.*?}}/]
+    ignoreCustomFragments: [ /{{.*?}}/ ]
 };
 
 module.exports = function(source) {
