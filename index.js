@@ -11,7 +11,8 @@ var minifierDefaults = {
     collapseBooleanAttributes: true,
     removeRedundantAttributes: true,
     removeEmptyAttributes: true,
-    caseSensitive: true
+    caseSensitive: true,
+    ignoreCustomFragments: [/{{.*?}}/],
 };
 
 module.exports = function(source) {
