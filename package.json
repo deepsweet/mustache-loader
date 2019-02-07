@@ -1,6 +1,6 @@
 {
   "name": "mustache-loader",
-  "version": "1.4.1",
+  "version": "1.4.2",
   "description": "Mustache loader for webpack",
   "keywords": [
     "webpack",
