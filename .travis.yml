@@ -13,7 +13,7 @@ deploy:
   provider: npm
   email: baderbuddy@gmail.com
   api_key:
-    secure: Z3YyEhthROWCdnvaNTW7n/ELbvBp+MIw+fWQ9Tt12TVuhVKENJJlhhPWQr92Dv03t3P0NVYMhr+ai5HQgPsnc+lGuEK6bj355KShC9V9W5+YPpUhHRrbW+l8/qWTMTCIfH3I0wrzjSJ9T+c8p0J0/Ay/5Fy+77uX/j+JzXiPclw=
+    secure: VRrFZqsxjfx5XrWBMAdiLvdw+/SmEMJYfVMyaBbe+49his6ZPrLeEe/zo7mH7Sg5e05NToc8s17zZJqfOqm6FvSvF7BUXoiaRnSYX4t9HNusq6SEJWKI4XiIaWdkDYxfZ68uGOuxQKJDgTqFIShQTyPV6gPMfmC0gVIa3eAolvo=
   on:
     tags: true
     repo: deepsweet/mustache-loader
