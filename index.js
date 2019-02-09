@@ -2,7 +2,7 @@
 var loaderUtils = require('loader-utils');
 var Hogan = require('hogan.js');
 var minifier = require('html-minifier');
-var extend = require('xtend');
+
 
 // https://github.com/kangax/html-minifier#options-quick-reference
 var minifierDefaults = {
@@ -17,7 +17,7 @@ var minifierDefaults = {
 
 module.exports = function(source) {
     var query = loaderUtils.getOptions(this) || {};
-    var hoganOpts = extend(query, { asString: true });
+    var hoganOpts = Object.assign({}, query, { asString: true });
     delete hoganOpts.minify;
     delete hoganOpts.noShortcut;
     delete hoganOpts.clientSide;
@@ -42,7 +42,7 @@ module.exports = function(source) {
 
         // `?{minify:{...}}`
         if (Object.prototype.toString.call(query.minify) === '[object Object]') {
-            minifierOptions = extend(minifierOptions, query.minify);
+            minifierOptions = Object.assign({}, minifierOptions, query.minify);
         }
 
         source = minifier.minify(source, minifierOptions);
@@ -81,7 +81,7 @@ module.exports = function(source) {
 module.exports.pitch = function(remainingRequest, precedingRequest, data) {
     if (remainingRequest.indexOf('!') >= 0) {
         var query = loaderUtils.getOptions(this) || {};
-        var hoganOpts = extend(query);
+        var hoganOpts = Object.assign({}, query);
         delete hoganOpts.minify;
         delete hoganOpts.noShortcut;
         delete hoganOpts.render;
